@@ -1,8 +1,10 @@
 # Quando parte
 trigger:
-- main
-- DEV
-- UAT
+  branches:
+      include:
+        - DEV
+        - UAT
+        - main
 
 # Crea una macchina virtuale con l'ultima versione di ubuntu
 pool:
