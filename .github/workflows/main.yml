@@ -12,36 +12,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout del repository
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # Build
-      - name: Build
-        run: |
-          echo "Inizio build"
-
-          # Controlla che esista index.html
-          test -f index.html
-
-          # Crea la cartella build
+      - run: |
           mkdir -p build
-
-          # Copia il file nella cartella build
           cp index.html build/
 
-          echo "Build terminata"
-
-      # Artifact con nome fisso
-      - name: Pubblica Artifact website
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: website
-          path: build
-
-      # Artifact con nome del branch
-      - name: Pubblica Artifact branch
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ github.ref_name }}
           path: build
