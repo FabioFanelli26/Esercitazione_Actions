@@ -1,7 +1,7 @@
 jobs:
 
   deploy-dev:
-    if: github.ref_name == 'DEV'
+    if: github.event.workflow_run.head_branch == 'DEV'
     runs-on: ubuntu-latest
     environment: DEV
 
@@ -9,7 +9,7 @@ jobs:
       - run: echo "Deploy DEV"
 
   deploy-uat:
-    if: github.ref_name == 'UAT'
+    if: github.event.workflow_run.head_branch == 'UAT'
     runs-on: ubuntu-latest
     environment: UAT
 
@@ -17,7 +17,7 @@ jobs:
       - run: echo "Deploy UAT"
 
   deploy-prod:
-    if: github.ref_name == 'main'
+    if: github.event.workflow_run.head_branch == 'main'
     runs-on: ubuntu-latest
     environment: PROD
 
