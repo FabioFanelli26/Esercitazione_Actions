@@ -1,0 +1,25 @@
+jobs:
+
+  deploy-dev:
+    if: github.ref_name == 'DEV'
+    runs-on: ubuntu-latest
+    environment: DEV
+
+    steps:
+      - run: echo "Deploy DEV"
+
+  deploy-uat:
+    if: github.ref_name == 'UAT'
+    runs-on: ubuntu-latest
+    environment: UAT
+
+    steps:
+      - run: echo "Deploy UAT"
+
+  deploy-prod:
+    if: github.ref_name == 'main'
+    runs-on: ubuntu-latest
+    environment: PROD
+
+    steps:
+      - run: echo "Deploy PROD"
